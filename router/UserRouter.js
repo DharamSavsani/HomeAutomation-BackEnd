@@ -2,7 +2,7 @@ const express = require("express");
 const UserModel = require("../model/UserModel");
 const UserRouter = express.Router();
 
-UserRouter.get("/auth", async (req, res) => {
+UserRouter.post("/auth", async (req, res) => {
   try {
     console.log("User ID : " ,req.body.userId);
     console.log("Pass : " ,req.body.password);
