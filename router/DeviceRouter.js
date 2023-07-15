@@ -19,7 +19,7 @@ DeviceRouter.post("/addDevice", async (req, res) => {
 });
 
 // User can retrive data of Devices and also use for other varification
-DeviceRouter.get("/getStatus", async (req, res) => {
+DeviceRouter.post("/getStatus", async (req, res) => {
   const _id = req.body._id;
   const user = await UserModel.find({ _id })
     .then((v) => {
