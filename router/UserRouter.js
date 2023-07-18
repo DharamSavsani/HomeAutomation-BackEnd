@@ -18,23 +18,22 @@ UserRouter.post("/auth", async (req, res) => {
   }
 });
 
-
-
 // User Can add Rooms By this API
 UserRouter.post("/addRoom", async (req, res) => {
   if (req.body == null) {
     res.status(500).send("ERROR");
   }
   try {
-    const { _id, room } = req.body;
-    UserModel.findByIdAndUpdate({ _id }, { $set: { [room]: {} } }).then((v) => {
-      res.send(v);
-    });
+    const { _id, room, val } = req.body;
+    UserModel.findByIdAndUpdate({ _id }, { $set: { [room]: val } }).then(
+      (v) => {
+        res.send(v);
+      }
+    );
   } catch (error) {
     res.send(error);
   }
 });
-
 
 // User can remove Roomes By this API
 UserRouter.post("/deleteRoom", async (req, res) => {
@@ -52,7 +51,6 @@ UserRouter.post("/deleteRoom", async (req, res) => {
     res.send(error);
   }
 });
-
 
 //User Can Rename the Room Name By this Api
 UserRouter.post("/reanameRoom", async (req, res) => {
