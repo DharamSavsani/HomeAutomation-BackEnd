@@ -29,6 +29,7 @@ DeviceRouter.post("/getStatus", async (req, res) => {
     delete user.password;
     delete user._id;
     delete user.userId;
+    console.log(user);
     res.send(user);
   } catch (e) {
     console.log("Error in getting device status", e);
