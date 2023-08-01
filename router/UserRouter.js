@@ -27,9 +27,9 @@ UserRouter.post("/addRoom", async (req, res) => {
     const { _id, room, val } = req.body;
     UserModel.findByIdAndUpdate({ _id }, { $set: { [room]: val } }).then(
       (v) => {
-        delete v.password;
-        delete v._id;
-        delete v.userId;
+        delete v[0].password;
+        delete v[0]._id;
+        delete v[0].userId;
         res.send(v);
       }
     );
@@ -47,9 +47,9 @@ UserRouter.post("/deleteRoom", async (req, res) => {
   try {
     UserModel.findByIdAndUpdate({ _id }, { $unset: { [room]: 1 } }).then(
       (v) => {
-        delete v.password;
-        delete v._id;
-        delete v.userId;
+        delete v[0].password;
+        delete v[0]._id;
+        delete v[0].userId;
         res.send(v);
       }
     );
@@ -66,9 +66,9 @@ UserRouter.post("/reanameRoom", async (req, res) => {
   const { _id, room, newRoom } = req.body;
   UserModel.findByIdAndUpdate({ _id }, { $rename: { [room]: `${newRoom}` } })
     .then((v) => {
-      delete v.password;
-      delete v._id;
-      delete v.userId;
+      delete v[0].password;
+      delete v[0]._id;
+      delete v[0].userId;
       res.send(v);
     })
     .catch((e) => {

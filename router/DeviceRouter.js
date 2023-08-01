@@ -12,9 +12,9 @@ DeviceRouter.post("/addDevice", async (req, res) => {
       { _id },
       { $set: { [room]: val } }
     );
-    delete user.password;
-    delete user._id;
-    delete user.userId;
+    delete user[0].password;
+    delete user[0]._id;
+    delete user[0].userId;
     res.send(user);
   } catch (error) {
     res.send(error);
@@ -26,9 +26,9 @@ DeviceRouter.post("/getStatus", async (req, res) => {
   try {
     const _id = req.body._id;
     const user = await UserModel.find({ _id }).lean().exec();
-    delete user.password;
-    delete user._id;
-    delete user.userId;
+    delete user[0].password;
+    delete user[0]._id;
+    delete user[0].userId;
     console.log(user);
     res.send(user);
   } catch (e) {
