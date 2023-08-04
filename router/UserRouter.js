@@ -27,10 +27,10 @@ UserRouter.post("/addRoom", async (req, res) => {
     const { _id, room, val } = req.body;
     UserModel.findByIdAndUpdate({ _id }, { $set: { [room]: val } }).then(
       (v) => {
-        console.log(v);
         delete v[0].password;
         delete v[0]._id;
         delete v[0].userId;
+        console.log(v);
         res.send(v);
       }
     );
