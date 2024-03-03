@@ -76,4 +76,12 @@ UserRouter.post("/reanameRoom", async (req, res) => {
       res.send(e + "EROROR");
     });
 });
+
+//This API is not for the Production use...
+//It is for cron job API...
+UserRouter.get("/", (req,res)=>{
+  res.status(200);
+  res.send("Home Automation");
+})
+
 module.exports = UserRouter;
